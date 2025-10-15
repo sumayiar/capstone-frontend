@@ -73,9 +73,9 @@ export default function HomePage({ setCurrentPage }) {
         </button>
         <button
           style={{marginTop: "0.5rem", padding: "0.5rem 1rem", cursor: "pointer"}}
-          onClick={() => setCurrentPage('dashboard')}
+          onClick={() => setCurrentPage('budget')}
         >
-         Go to Dashboard (Dev)
+         Go to Budget (Dev)
         </button>
       </div>
     </div>

@@ -6,6 +6,7 @@ import Login from "./components/Login.jsx";
 import ThemeToggle from "./components/ThemeToggle.jsx";
 import SignUp from "./components/SignUp.jsx";
 import EnvelopeVisuals from "./components/EnvelopeVisuals.jsx";
+import Budget from "./components/Budget.jsx";
 
 export default function App(){
   const [currentPage, setCurrentPage] = useState('home'); // start on login to test
@@ -71,43 +72,12 @@ export default function App(){
       </div>
     );
   }
-  if (currentPage === "envelope-visuals"){
+  if (currentPage === 'envelope-visuals'){
     return <EnvelopeVisuals setCurrentPage={setCurrentPage} />;
   } 
-  
-/* first
-  if (currentPage === "envelope-visuals") {
-    return (
-      <div className="container">
-        <header className="header">
-          <div
-            className="brand"
-            style={{ cursor: 'pointer' }}
-            onClick={() => setCurrentPage('home')}
-          >
-            <img
-              src="/cat-envelope.jpg"
-              alt="Cashvelo logo"
-              className="logo-img"
-              style={{ height: '40px', width: '40px', borderRadius: '8px' }}
-            />
-            <div>Cashvelo</div>
-          </div>
-          <ThemeToggle/>
-        </header>
-
-        <main className="main">
-          <EnvelopeVisuals setCurrentPage={setCurrentPage} />
-        </main>
-
-        <footer className="footer">
-          © {new Date().getFullYear()} Cashvelo
-        </footer>
-      </div>
-    );
+  if (currentPage === 'budget'){
+    return <Budget setCurrentPage={setCurrentPage} />;
   } 
-    */
 
   return <HomePage setCurrentPage={setCurrentPage} />;
 }
-

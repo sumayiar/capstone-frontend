@@ -29,7 +29,12 @@ export default function EnvelopeVisuals({setCurrentPage}){
                     <h1 className="page-title">Select a Bill</h1>
                     <div className="bills-grid">
                         {bills.map((bill) =>(
-                            <div key={bill} className="bill-card">
+                            <div 
+                                key={bill} 
+                                className="bill-card"
+                                /* work on this next */
+                                onClick={()=> handleBillClick(bill)}
+                            >
                                  <p className="bill-amount">${bill}</p>
                             </div>
                         ))}
@@ -37,5 +42,5 @@ export default function EnvelopeVisuals({setCurrentPage}){
                 </div>
             </main>
         </div>
-        );
-    }
+    );
+}
