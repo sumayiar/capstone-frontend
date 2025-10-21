@@ -64,19 +64,6 @@ export default function HomePage({ setCurrentPage }) {
           your standard ways of budegting. But with Cashvelo we use the Cash envelope system. The Cash enevelope
           system is a popular budeting method for visualizaing and maintaining a flexible budget. 
         </p>
-
-        <button
-          style={{marginTop: "1rem", padding: "0.5rem 1rem", cursor: "pointer"}}
-          onClick={() => setCurrentPage('envelope-visuals')}
-        >
-         Go to Envelope Visuals (Dev)
-        </button>
-        <button
-          style={{marginTop: "0.5rem", padding: "0.5rem 1rem", cursor: "pointer"}}
-          onClick={() => setCurrentPage('budget')}
-        >
-         Go to Budget (Dev)
-        </button>
       </div>
     </div>
   );
