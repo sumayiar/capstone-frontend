@@ -8,14 +8,17 @@ export default function Navbar({ setCurrentPage }) {
     <nav className="relative bg-transparent backdrop-blur-md text-white px-6 py-4 flex justify-between items-center border-b border-white/10">
       {/* Logo */}
       <div
-        className="flex items-center cursor-pointer"
+        className="flex items-center space-x-3 cursor-pointer"
         onClick={() => setCurrentPage("home")}
+        role="button"
+        aria-label="Go to homepage"
       >
+        <img src="/cat-envelope.jpg" alt="Cashvelo logo" className="w-8 h-8 rounded-md" />
         <span className="text-xl font-semibold">Cashvelo</span>
       </div>
 
       {/* Desktop Links */}
-      <div className="hidden md:flex items-center space-x-8 text-sm font-medium">
+      <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
         <button
           onClick={() => setCurrentPage("home")}
           className="hover:text-purple-400 transition px-3 py-2 rounded-md hover:bg-white/10"
@@ -39,8 +42,10 @@ export default function Navbar({ setCurrentPage }) {
 
       {/* Mobile Menu Button */}
       <button
-        className="md:hidden focus:outline-none"
+        className="md:hidden focus:outline-none p-2"
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-label={isOpen ? "Close menu" : "Open menu"}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -49,6 +54,7 @@ export default function Navbar({ setCurrentPage }) {
           strokeWidth={1.5}
           stroke="currentColor"
           className="w-6 h-6"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -60,7 +66,7 @@ export default function Navbar({ setCurrentPage }) {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="absolute top-full right-6 z-50 bg-black/90 border border-white/10 rounded-xl p-4 flex flex-col space-y-4 w-48 md:hidden">
+        <div className="absolute top-full right-6 z-50 bg-black/90 border border-white/10 rounded-xl p-3 flex flex-col space-y-2 w-48 md:hidden">
           <button
             onClick={() => {
               setCurrentPage("home");
