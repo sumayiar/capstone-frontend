@@ -1,0 +1,50 @@
+.envelope-visuals-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1 rem2 rem;
+    width: 100%;
+}
+.bills-grid{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .8rem;
+    width: 100%;
+    margin-left: 2rem; /* indentation of bill from left */
+}
+.bill-card{
+    background-color: #85BB65;
+    border: 2px solid #1fa30d;
+    border-radius: 3px;
+    width: 120px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.bill-amount {
+    width: 40px;
+    height: 44px;
+    background-color: #d9f2c3;
+    border: 2px solid #1fa30d;
+    border-radius: 50%/50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #1fa30d;
+    margin: 0;
+}
+.page-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    text-align: left;
+    width: 100%;
+}

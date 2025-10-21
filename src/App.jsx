@@ -1,56 +1,57 @@
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
-import HomePage from "./pages/HomePage.jsx";
-import Login from "./pages/Login.jsx";
-import ThemeToggle from "./components/ThemeToggle.jsx"; 
+import HomePage from "./components/HomePage.jsx";
+import Login from "./components/Login.jsx";
+import ThemeToggle from "./components/ThemeToggle.jsx";
 import SignUp from "./components/SignUp.jsx";
-import QuestionnairePage from "./pages/QuestionnairePage.jsx"; // ✅ import the new page
-import ForgotPassword from "./pages/ForgotPassword.jsx";
+import EnvelopeVisuals from "./components/EnvelopeVisuals.jsx";
+import Budget from "./components/Budget.jsx";
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState("home"); // can be 'home', 'login', 'signup', 'questionnaire'
+export default function App(){
+  const [currentPage, setCurrentPage] = useState('home'); // start on login to test
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
-      if (user) setCurrentPage("home"); // logged in → Home
-      else setCurrentPage((p) => p ?? "login"); // logged out → Login
+      if (user) setCurrentPage('home');       // logged in → Home
+      else setCurrentPage((p) => p ?? 'login'); // logged out → Login (safety)
     });
     return unsub;
   }, []);
 
-  // --- Sign Up Page ---
-  if (currentPage === "signup") {
+  if (currentPage === 'signup') {
     return (
       <div className="container">
         <header className="header">
           <div
             className="brand"
-            style={{ cursor: "pointer" }}
-            onClick={() => setCurrentPage("home")}
+            style={{ cursor: 'pointer' }}
+            onClick={() => setCurrentPage('home')}
           >
+            {/* replaced emoji with the same image logo used on HomePage */}
             <img
               src="/cat-envelope.jpg"
               alt="Cashvelo logo"
               className="logo-img"
-              style={{ height: "40px", width: "40px", borderRadius: "8px" }}
+              style={{ height: '40px', width: '40px', borderRadius: '8px' }}
             />
             <div>Cashvelo</div>
           </div>
-          <ThemeToggle />
+          <ThemeToggle/>
         </header>
 
         <main className="main">
           <SignUp setCurrentPage={setCurrentPage} />
         </main>
 
-        <footer className="footer">© {new Date().getFullYear()} Cashvelo</footer>
+        <footer className="footer">
+          © {new Date().getFullYear()} Cashvelo
+        </footer>
       </div>
     );
   }
 
-  // --- Login Page ---
-  if (currentPage === "login") {
+  if (currentPage === 'login') {
     return (
       <div className="container">
         <header className="header">
@@ -58,44 +59,25 @@ export default function App() {
             <div className="logo">🐱</div>
             <div>Cashvelo</div>
           </div>
-          <ThemeToggle />
+          <ThemeToggle/>
         </header>
 
         <main className="main">
           <Login setCurrentPage={setCurrentPage} />
         </main>
 
-        <footer className="footer">© {new Date().getFullYear()} Cashvelo</footer>
+        <footer className="footer">
+          © {new Date().getFullYear()} Cashvelo
+        </footer>
       </div>
     );
   }
+  if (currentPage === 'envelope-visuals'){
+    return <EnvelopeVisuals setCurrentPage={setCurrentPage} />;
+  } 
+  if (currentPage === 'budget'){
+    return <Budget setCurrentPage={setCurrentPage} />;
+  } 
 
-  // --- Forgot Password Page ---
-  if(currentPage === "forgot-password"){
-    return(
-      <div className="container">
-        <header className="header">
-          <div className="brand">
-            <div className="logo">🐱</div>
-            <div>Cashvelo</div>
-          </div>
-          <ThemeToggle />
-        </header>
-
-        <main className="main">
-          <ForgotPassword setCurrentPage={setCurrentPage} />
-        </main>
-
-        <footer className="footer">© {new Date().getFullYear()} Cashvelo</footer>
-      </div>
-    );
-  }
-
-  // --- Questionnaire Page ---
-  if (currentPage === "questionnaire") {
-    return <QuestionnairePage setCurrentPage={setCurrentPage} />;
-  }
-
-  // --- Home Page ---
   return <HomePage setCurrentPage={setCurrentPage} />;
 }
